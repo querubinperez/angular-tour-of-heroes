@@ -1,0 +1,78 @@
+<div>
+    <mat-tab-group>
+        <mat-tab label="COMENTARIOS">
+            <div class="example-container">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Heroe:
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <div *ngIf="selected; else elseBlock"><b>{{selected}}</b></div>
+                                <ng-template #elseBlock>Seleccione su Heroe</ng-template>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field>
+                            <mat-select placeholder="Heroes" [(value)]="selected">
+                                <mat-option *ngFor="let hero of heroes" [value]="hero.name">
+                                    {{hero.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="selected">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Comentarios:
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <p>Por favor escriba su comentario para <b>{{selected}}</b></p>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field>
+                            <textarea matInput placeholder="Comment"></textarea>
+                        </mat-form-field>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <br>
+            <button mat-raised-button color="primary">Enviar Comentarios!</button>
+        </mat-tab>
+
+        <mat-tab label="PQSR Y DENUNCIAS">
+            <div class="example-container">
+                <mat-form-field>
+                    <mat-select placeholder="Select">
+                        <mat-option value="option">Petición</mat-option>
+                        <mat-option value="option">Queja</mat-option>
+                        <mat-option value="option">Solicitud</mat-option>
+                        <mat-option value="option">Reclamo</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput placeholder="Resumen"></textarea>
+                </mat-form-field>
+            </div>
+            <button mat-fab color="warn">Enviar</button>
+        </mat-tab>
+
+        <mat-tab label="Favorito">
+            <div class="example-container">
+                <label id="example-radio-group-label">Selecciona tu heroe favorito:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteHero">
+                    <mat-radio-button class="example-radio-button" *ngFor="let hero of heroes" [value]="hero.name">
+                        {{hero.name}}
+                    </mat-radio-button>
+                </mat-radio-group>
+                <div>Tu heroe favorito es: {{favoriteHero}}</div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
