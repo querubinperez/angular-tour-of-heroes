@@ -2,13 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule }    from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import 'hammerjs';//nuevo
+
 import {MatInputModule, MatButtonModule, MatSelectModule} from '@angular/material/';
 import {MatExpansionModule} from '@angular/material/';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -37,13 +35,6 @@ import { MaterialComponent } from './material/material.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     // Material Desing.
     BrowserAnimationsModule,
     NoopAnimationsModule,
@@ -53,7 +44,7 @@ import { MaterialComponent } from './material/material.component';
     MatSelectModule,
     MatExpansionModule ,
     MatTabsModule,
-    MatRadioModule     
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
